@@ -22,6 +22,11 @@ jobs:
         override: true
     - name: Build and test
       run: cargo build --verbose && cargo test --verbose
+    - name: Build archive
+      shell: bash
+      run: |
+          pwd
+          tree
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
