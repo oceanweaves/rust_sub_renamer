@@ -1,0 +1,24 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        rust: [stable, beta, nightly]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Rust ${{ matrix.rust }}
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        override: true
+    - name: Build and test
+      run: cargo build --verbose && cargo test --verbose
