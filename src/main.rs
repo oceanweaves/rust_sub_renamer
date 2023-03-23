@@ -3,7 +3,6 @@ use std::fs;
 use regex::Regex;
 use std::path::Path;
 
-
 fn extract_episode_number(filename: &str) -> Option<u32> {
     let patterns = vec![
         Regex::new(r"(?i)(?:S\d{1,2}E|E)(\d{1,2})").unwrap(),
@@ -13,6 +12,8 @@ fn extract_episode_number(filename: &str) -> Option<u32> {
         Regex::new(r"(\d{1,2})\s*\[").unwrap(),
         Regex::new(r"(?i)\[.*?\]\[(\d{1,2})\]").unwrap(),
         Regex::new(r"(?i)\[x_x\].*?\[Ep(\d{1,2})\]").unwrap(),
+        Regex::new(r"(?i)\[(?:.*?)\](\d{1,2})\[").unwrap(),
+        Regex::new(r"(?i)\b(\d{1,2})\b").unwrap(),
     ];
 
     for pattern in patterns {
@@ -29,8 +30,6 @@ fn extract_episode_number(filename: &str) -> Option<u32> {
 
     None
 }
-
-
 
 fn main() {
     let video_extensions = [".mkv", ".mp4", ".MKV", ".MP4"];
