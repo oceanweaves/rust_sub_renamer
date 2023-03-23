@@ -22,3 +22,9 @@ jobs:
         override: true
     - name: Build and test
       run: cargo build --verbose && cargo test --verbose
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name:  rust_sub_renamer
+        path: target/release/ rust_sub_renamer
+
