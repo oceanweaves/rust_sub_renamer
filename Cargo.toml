@@ -1,5 +1,5 @@
 [package]
-name = "rename_rust"
+name = " rust_sub_renamer"
 version = "0.1.0"
 edition = "2021"
 
