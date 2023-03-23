@@ -20,15 +20,12 @@ jobs:
       with:
         toolchain: ${{ matrix.rust }}
         override: true
+        
     - name: Build and test
       run: cargo build --verbose && cargo test --verbose
-    - name: Build archive
-      shell: bash
-      run: |
-          pwd
-          tree
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: rust_sub_renamer
-        path: rust_sub_renamer/target/debug/
+        path: target/debug/
