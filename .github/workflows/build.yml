@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: rust_sub_renamer
-        path: target/debug/
+        path: target/debug/rust_sub_renamer*
